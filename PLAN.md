@@ -25,7 +25,7 @@
 |-------|----------|-----------|--------------|--------------------------------|
 
 
-- Piece.offset(shape, rotation) - Calculate distance of points for position to form shape
+- offset(shape, rotation) - Calculate distance points must be from position to form shape
 
 | shape | rotation | position | new_position | off_set os |
 |-------|----------|----------|--------------|------------|

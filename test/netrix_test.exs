@@ -11,11 +11,18 @@ defmodule NetrixTest do
     end
   end
 
-
-
-  # describe "shift/1" do
-  #   test ":i with 0 rotation at {5, 1}" do
-
-  #   end
-  # end
+  describe "Tetro.rotate/0" do
+    test "shape is rotated 0 to 90" do
+      assert Tetro.rotate(%{shape: :i, rotation: 0, position: {5, 1}}) === %{shape: :i, rotation: 90, position: {5, 1}}
+    end
+    test "rotate shape 90 to 180" do
+      assert Tetro.rotate(%{shape: :i, rotation: 90, position: {5, 1}}) === %{shape: :i, rotation: 180, position: {5, 1}}
+    end
+    test "rotate shape 180 t0 270" do
+      assert Tetro.rotate(%{shape: :i, rotation: 180, position: {5, 1}}) === %{shape: :i, rotation: 270, position: {5, 1}}
+    end
+    test "rotate shape 180 to 270" do
+      assert Tetro.rotate(%{shape: :i, rotation: 270, position: {5, 1}}) === %{shape: :i, rotation: 0, position: {5, 1}}
+    end
+  end
 end
