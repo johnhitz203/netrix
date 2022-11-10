@@ -26,8 +26,9 @@ defmodule Netrix.Game.Tetro do
     "i'm a homework"
   end
 
-  def to_points(%{shape: :i}) do
-    [{2, 1}, {2, 2}, {2, 3}, {2, 4}]
+    def to_points(%{shape: :i} = tetro) do
+    %{position: {x, y} = p} = tetro
+    [{x - 2, y}, {x - 1, y}, p, {x + 1, y}]
   end
 
 end
