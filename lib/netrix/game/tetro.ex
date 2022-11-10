@@ -1,9 +1,5 @@
 defmodule Netrix.Game.Tetro do
-<<<<<<< HEAD
-  defstruct [shape: :z, rotation: 0, position: {5,1}]
-=======
   defstruct shape: :z, rotation: 0, position: {5, 1}
->>>>>>> main
 
   def new do
     __struct__(shape: random_shape())
@@ -13,8 +9,6 @@ defmodule Netrix.Game.Tetro do
     ~w[l i j s z o t]a
     |> Enum.random()
   end
-<<<<<<< HEAD
-=======
 
   def right(%{position: {x, y}} = tetro) do
     %{tetro | position: {x + 1, y}}
@@ -35,5 +29,5 @@ defmodule Netrix.Game.Tetro do
   def to_points(%{shape: :i}) do
     [{2, 1}, {2, 2}, {2, 3}, {2, 4}]
   end
->>>>>>> main
+
 end
