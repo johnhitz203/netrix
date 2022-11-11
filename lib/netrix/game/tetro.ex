@@ -6,8 +6,7 @@ defmodule Netrix.Game.Tetro do
   end
 
   defp random_shape do
-    # ~w[l i j s z o t]a
-    ~w[i]a
+    ~w[l i j s z o t]a
     |> Enum.random()
   end
 
@@ -31,19 +30,57 @@ defmodule Netrix.Game.Tetro do
     %{tetro | rotation: 0}
   end
 
-  def to_points(%{shape: :i} = tetro) do
-    os = get_offset(tetro)
-    %{position: {x, y}} = tetro
-    px = x + os
-    [{px - 2, y}, {px - 1, y}, {px, y}, {px + 1, y}]
+  def to_points(%{shape: :i}) do
+   [
+      {2, 1},
+      {2, 2},
+      {2, 3},
+      {2, 4}
+    ]
   end
 
-  defp get_offset(%{shape: shape, position: {x, _y}, rotation: r}) when shape === :i and r === 0 do
-    cond do
-      x === 2 -> 1
-      x === 1 -> 2
-      x >= 3 -> 0
-    end
+  def to_points(%{shape: :o}) do
+    [
+      {2, 2}, {2, 3},
+      {3, 2}, {3, 3}
+    ]
   end
+
+  def to_points(%{shape: :l}) do
+    [
+      {2, 1},
+      {2, 2},
+      {2, 3},{3, 3}
+    ]
+  end
+
+  def to_points(%{shape: :j}) do
+    [
+             {3, 1},
+             {3, 2},
+      {2, 3},{3, 3},
+    ]
+  end
+
+  def to_points(%{shape: :s}) do
+    [         {2, 2}, {3, 2},
+      {1, 3}, {2, 3}
+    ]
+  end
+
+  def to_points(%{shape: :z}) do
+    [
+      {2, 2}, {3, 2},
+             {3, 3}, {4, 3}
+    ]
+  end
+
+  def to_points(%{shape: :t}) do
+    [
+      {2, 2}, {3, 2}, {4, 2},
+              {3, 3}
+    ]
+  end
+
 
 end
