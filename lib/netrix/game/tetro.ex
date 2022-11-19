@@ -39,10 +39,11 @@ defmodule Netrix.Game.Tetro do
     ]
   end
 
-  def to_points(%{shape: :o}) do
+  def to_points(%{shape: :j}) do
     [
-      {2, 2}, {2, 3},
-      {3, 2}, {3, 3}
+             {3, 1},
+             {3, 2},
+      {2, 3},{3, 3},
     ]
   end
 
@@ -54,24 +55,16 @@ defmodule Netrix.Game.Tetro do
     ]
   end
 
-  def to_points(%{shape: :j}) do
+  def to_points(%{shape: :o}) do
     [
-             {3, 1},
-             {3, 2},
-      {2, 3},{3, 3},
+      {2, 2}, {2, 3},
+      {3, 2}, {3, 3}
     ]
   end
 
   def to_points(%{shape: :s}) do
     [         {2, 2}, {3, 2},
       {1, 3}, {2, 3}
-    ]
-  end
-
-  def to_points(%{shape: :z}) do
-    [
-      {2, 2}, {3, 2},
-             {3, 3}, {4, 3}
     ]
   end
 
@@ -82,5 +75,10 @@ defmodule Netrix.Game.Tetro do
     ]
   end
 
-
+  def to_points(%{shape: :z}) do
+    [
+      {2, 2}, {3, 2},
+             {3, 3}, {4, 3}
+    ]
+  end
 end
