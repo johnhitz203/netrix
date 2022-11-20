@@ -1,5 +1,6 @@
 defimpl String.Chars, for: Shape do
   alias Netrix.Game.Tetro
+
   def to_string(shape) do
     interior =
       shape
@@ -11,8 +12,8 @@ defimpl String.Chars, for: Shape do
   end
 
   defp to_chars(list_of_points) do
-    Enum.map(1..4, fn(x) ->
-      Enum.map(1..4, fn(y) ->
+    Enum.map(1..4, fn x ->
+      Enum.map(1..4, fn y ->
         if {x, y} in list_of_points do
           "$"
         else
@@ -24,7 +25,7 @@ defimpl String.Chars, for: Shape do
 
   def join_chars(list) do
     list
-    |> Enum.map(fn(r) ->
+    |> Enum.map(fn r ->
       Enum.join(r, "")
     end)
   end
