@@ -91,8 +91,7 @@ defmodule Netrix.Game.Tetro do
 
   defimpl String.Chars, for: Tetro do
     def to_string(tetro) do
-      _output =
-        tetro
+      tetro
         |> Tetro.to_points()
         |> to_list_of_strings()
         |> return_string()
@@ -110,6 +109,8 @@ defmodule Netrix.Game.Tetro do
       end
     end
 
+    # This could maybe be named better
+    # def into_single_string(list_of_strings) do ???
     defp return_string(list_of_strings) do
       for string <- list_of_strings, into: "" do
         "#{string}\n"
