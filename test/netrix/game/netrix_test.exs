@@ -1,6 +1,7 @@
 defmodule NetrixTestGame do
   use ExUnit.Case
 
+  alias Mix.Task
   alias Netrix.Game.Tetro
 
   describe "Tetro.to_points/1" do
@@ -79,7 +80,8 @@ defmodule NetrixTestGame do
 
   describe "Tetro.to_string/1" do
     test "success: accepts a tetro and returns a string representation" do
-      tetro = %Netrix.Game.Tetro{shape: :i, rotation: 90, position: {5, 1}}
+      # tetro = %Netrix.Game.Tetro{shape: :i, rotation: 90, position: {5, 1}}
+      tetro = Tetro.new(:i)
       assert ".$..\n.$..\n.$..\n.$..\n" = to_string(tetro)
     end
   end
