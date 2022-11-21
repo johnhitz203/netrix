@@ -80,9 +80,7 @@ defmodule NetrixTestGame do
   describe "Tetro.to_string/1" do
     test "success: accepts a tetro and returns a string representation" do
       tetro = %Netrix.Game.Tetro{shape: :i, rotation: 90, position: {5, 1}}
-      assert "WTF? Over!" = to_string(tetro)
+      assert ".$..\n.$..\n.$..\n.$..\n" = to_string(tetro)
     end
   end
-
-
 end
