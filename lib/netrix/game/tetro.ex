@@ -1,8 +1,15 @@
 defmodule Netrix.Game.Tetro do
+
+  alias Netrix.Game.Tetro
+
   defstruct shape: :z, rotation: 90, position: {5, 1}
 
   def new do
     __struct__(shape: random_shape())
+  end
+
+  def new(shape) do
+    __struct__(shape: shape)
   end
 
   defp random_shape do
@@ -80,5 +87,35 @@ defmodule Netrix.Game.Tetro do
       {2, 2}, {3, 2},
              {3, 3}, {4, 3}
     ]
+  end
+
+  defimpl String.Chars, for: Tetro do
+    def to_string(tetro) do
+      _output =
+        tetro
+        |> Tetro.to_points()
+        |> to_list_of_strings()
+        |> return_string()
+    end
+
+    defp to_list_of_strings(list_of_points) do
+      for y <- 1..4 do
+        for x <- 1..4, into: "" do
+          if {x, y}  in list_of_points do
+            "$"
+          else
+            "."
+          end
+        end
+      end
+    end
+
+    defp return_string(list_of_strings) do
+      for string <- list_of_strings, into: "" do
+        "#{string}\n"
+      end
+    end
+
+
   end
 end
