@@ -1,5 +1,4 @@
 defmodule Netrix.Game.Tetro do
-
   alias Netrix.Game.Tetro
 
   defstruct shape: :z, rotation: 90, position: {5, 1}
@@ -38,7 +37,11 @@ defmodule Netrix.Game.Tetro do
   end
 
   def to_points(%{shape: :i}) do
-   [
+    # .█..
+    # .█..
+    # .█..
+    # .█..
+    [
       {2, 1},
       {2, 2},
       {2, 3},
@@ -47,61 +50,87 @@ defmodule Netrix.Game.Tetro do
   end
 
   def to_points(%{shape: :j}) do
+    # ..█.
+    # ..█.
+    # .██.
+    # ....
     [
-             {3, 1},
-             {3, 2},
-      {2, 3},{3, 3},
+      {3, 1},
+      {3, 2},
+      {2, 3},
+      {3, 3}
     ]
   end
 
   def to_points(%{shape: :l}) do
+    # .█..
+    # .█..
+    # .██.
+    # ....
     [
       {2, 1},
       {2, 2},
-      {2, 3},{3, 3}
+      {2, 3},
+      {3, 3}
     ]
   end
 
   def to_points(%{shape: :o}) do
+    # ....
+    # .██.
+    # .██.
+    # ....
     [
-      {2, 2}, {2, 3},
-      {3, 2}, {3, 3}
+      {2, 2},
+      {2, 3},
+      {3, 2},
+      {3, 3}
     ]
   end
 
   def to_points(%{shape: :s}) do
-    [         {2, 2}, {3, 2},
-      {1, 3}, {2, 3}
-    ]
+    # ....
+    # .██.
+    # ██..
+    # ....
+    [{2, 2}, {3, 2}, {1, 3}, {2, 3}]
   end
 
   def to_points(%{shape: :t}) do
     [
-      {2, 2}, {3, 2}, {4, 2},
-              {3, 3}
+      {2, 2},
+      {3, 2},
+      {4, 2},
+      {3, 3}
     ]
   end
 
   def to_points(%{shape: :z}) do
+    # ....
+    # .███
+    # ..█.
+    # ....
     [
-      {2, 2}, {3, 2},
-             {3, 3}, {4, 3}
+      {2, 2},
+      {3, 2},
+      {3, 3},
+      {4, 3}
     ]
   end
 
   defimpl String.Chars, for: Tetro do
     def to_string(tetro) do
       tetro
-        |> Tetro.to_points()
-        |> to_list_of_strings()
-        |> return_string()
+      |> Tetro.to_points()
+      |> to_list_of_strings()
+      |> return_string()
     end
 
     defp to_list_of_strings(list_of_points) do
       for y <- 1..4 do
         for x <- 1..4, into: "" do
-          if {x, y}  in list_of_points do
-            "$"
+          if {x, y} in list_of_points do
+            "█"
           else
             "."
           end
@@ -116,7 +145,5 @@ defmodule Netrix.Game.Tetro do
         "#{string}\n"
       end
     end
-
-
   end
 end
